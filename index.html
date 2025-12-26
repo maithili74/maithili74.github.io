@@ -3,69 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maithili Annavarapu | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Maithili Annavarapu | Data Scientist & ML Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Hero Section */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, #667eea 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5em;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        main {
+            background: var(--light);
+            min-height: 100vh;
+        }
+
+        section {
+            padding: 80px 0;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .edu-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 35px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item .date {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #projects h2 {
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .project-card .date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .btn-github {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-github:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Achievements */
+        .achievements-list {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .achievement-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item::before {
+                left: -27px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Maithili Annavarapu</h1>
-        <p>Master's in Data Science | Passionate about Machine Learning & NLP</p>
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <h1>Maithili Annavarapu</h1>
+            <p class="subtitle">Data Scientist & Machine Learning Engineer</p>
+            <div class="social-links">
+                <a href="https://github.com/maithili74" target="_blank">
+                    <span>🔗</span> GitHub
+                </a>
+                <a href="https://linkedin.com/in/maithili-annavarpu" target="_blank">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="mailto:maithili.a7@gmail.com">
+                    <span>📧</span> Email
+                </a>
+                <a href="tel:+12407146035">
+                    <span>📱</span> +1 (240) 714-6035
+                </a>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p style="font-size: 1.1em; color: var(--gray); text-align: center; margin-bottom: 40px;">
+                        I'm a passionate Data Scientist pursuing my Master's in Data Science at the University of Maryland. 
+                        With expertise in Machine Learning, Deep Learning, and NLP, I love building intelligent systems 
+                        that solve real-world problems. My work spans from recommendation engines to computer vision applications.
+                    </p>
+                    <div class="education-grid">
+                        <div class="edu-card">
+                            <h3>🎓 Master of Science - Data Science</h3>
+                            <p><strong>University of Maryland, College Park</strong></p>
+                            <p>Expected: May 2026</p>
+                            <p style="margin-top: 10px;">GPA: 3.9 / 4.0</p>
+                        </div>
+                        <div class="edu-card">
+                            <h3>🎓 Bachelor of Engineering - ECE</h3>
+                            <p><strong>Osmania University, India</strong></p>
+                            <p>Graduated: June 2023</p>
+                            <p style="margin-top: 10px;">CGPA: 8.0 / 10.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a graduate student at the University of Maryland, pursuing a Master of Science in Data Science. With a strong foundation in machine learning, deep learning, and Natural Language Processing (NLP), I am passionate about building impactful, data-driven solutions. I am currently looking for Data Science and NLP roles to apply my skills in real-world applications.</p>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2>Skills & Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>💻 Languages & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Spark</span>
+                            <span class="skill-tag">Vector Databases</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🤖 Machine Learning & Deep Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Feature Engineering</span>
+                            <span class="skill-tag">Time Series</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">ETL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>📝 Natural Language Processing</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">NLTK</span>
+                            <span class="skill-tag">SpaCy</span>
+                            <span class="skill-tag">Transformers</span>
+                            <span class="skill-tag">Word2Vec</span>
+                            <span class="skill-tag">Hugging Face</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>📊 Data Analysis & Visualization</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">EDA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li><strong>Languages & Tools:</strong> Python, SQL, HTML, CSS, MongoDB, Git, Spark, Vector Databases</li>
-            <li><strong>Machine Learning & Deep Learning:</strong> Scikit-learn, TensorFlow, Keras, PyTorch, Feature Engineering, Model Evaluation, Time Series Analysis, CI/CD Pipelines, ETL Process</li>
-            <li><strong>Natural Language Processing:</strong> NLTK, SpaCy, Hugging Face Transformers, Word2Vec</li>
-            <li><strong>Data Analysis & Visualization:</strong> NumPy, Pandas, Matplotlib, Seaborn, EDA, Tableau</li>
-        </ul>
-    </section>
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <h2>Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Machine Learning Intern - Side Quest</h3>
+                        <p class="date">📅 June 2025 – September 2025 | United States</p>
+                        <ul>
+                            <li>Developed a rule-based recommendation engine to rank top-10 relevant posts using user interactions (views, upvotes, down-votes), and transitioned to collaborative filtering using ALS in Microsoft Recommenders</li>
+                            <li>Developed and trained a two-tower deep learning recommendation model using user and video metadata to predict user engagement with 64% accuracy</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Developer Intern - IIIT Hyderabad</h3>
+                        <p class="date">📅 August 2023 – November 2023 | India</p>
+                        <ul>
+                            <li>Designed and implemented a pose detection-based student attendance system using OpenCV, TensorFlow, and MediaPipe, achieving 85% accuracy for single-person analysis</li>
+                            <li>Upgraded the system with YOLO-based multi-person detection to analyze group images, improving scalability and enabling accurate tracking of up to 5 individuals per frame</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Data Science Intern - Sabudh Foundation</h3>
+                        <p class="date">📅 July 2022 – December 2022 | India</p>
+                        <ul>
+                            <li>Designed and developed Agri-Bot, an NLP-based chatbot using Spacy, K-Means clustering, and RASA to provide farmers with personalized guidance, improving support accessibility by 30%</li>
+                            <li>Integrated NER and Text Summarization to enhance contextual understanding, boosting response accuracy and dialogue efficiency by 20%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>
-                <h3>Automated Complaint Categorization and Business Routing</h3>
-                <p><strong>Jun 2025:</strong> Built an NLP pipeline using BERTopic to categorize over 6,800 user reviews, automating issue routing and saving 30+ hours of manual review. Performed sentiment analysis to prioritize urgent issues with 83% negativity accuracy.</p>
-            </li>
-            <li>
-                <h3>LLM Classification Fine-tuning</h3>
-                <p><strong>May 2024:</strong> Developed a classification model using SentenceTransformers and TensorFlow, achieving 87% accuracy. Implemented A/B pairwise data to mimic user preference behavior.</p>
-            </li>
-            <li>
-                <h3>Multilingual Toxic Comment Classification</h3>
-                <p><strong>Sept 2024:</strong> Created a multilingual classification pipeline for toxic comments across 7 languages, utilizing deep learning models (MLP, RNN, LSTM) to achieve up to 85% accuracy.</p>
-            </li>
-        </ul>
-    </section>
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>🎯 Automated Complaint Categorization</h3>
+                        <p class="date">June 2025</p>
+                        <p>Built an end-to-end NLP pipeline using BERTopic to analyze 6,800+ Google Play reviews, identifying top complaint categories covering 91.3% of feedback and routing issues to respective teams</p>
+                        <p style="margin-top: 15px;">Performed sentiment analysis to prioritize high-frustration topics, automating triage and saving 30+ hours of manual review effort</p>
+                        <a href="https://github.com/maithili74" class="btn-github" target="_blank">View on GitHub →</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>🧠 LLM Classification Finetuning</h3>
+                        <p class="date">May 2024</p>
+                        <p>Preprocessed textual data and converted responses into dense embeddings using SentenceTransformers to support downstream classification</p>
+                        <p style="margin-top: 15px;">Trained and evaluated a neural network achieving 87% accuracy, applied A/B-style pairwise data to mimic user preference behavior</p>
+                        <a href="https://github.com/maithili74" class="btn-github" target="_blank">View on GitHub →</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>🌐 Multilingual Toxic Comment Classification</h3>
+                        <p class="date">September 2024</p>
+                        <p>Engineered a multilingual toxic comment classification pipeline on 435k+ text comments across 7 languages using Word2Vec for semantic feature extraction and SMOTE for class balancing</p>
+                        <p style="margin-top: 15px;">Implemented models including Logistic Regression, Random Forest, and deep learning models (MLP, RNN, LSTM) achieving up to 85% accuracy</p>
+                        <a href="https://github.com/maithili74" class="btn-github" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me at:</p>
-        <ul>
-            <li>Email: <a href="mailto:maithili.a7@gmail.com">maithili.a7@gmail.com</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/maithili-annavarapu/">linkedin.com/in/maithili-annavarapu</a></li>
-            <li>Phone: +1 (240) 714-6035</li>
-        </ul>
-    </section>
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <div class="container">
+                <h2>Achievements & Certifications</h2>
+                <div class="achievements-list">
+                    <div class="achievement-item">
+                        <h3>🏆 AWS AI & ML Scholarship</h3>
+                        <p>Selected as one of 2000 global recipients for the AWS AI & ML Scholarship by Udacity, sponsored by Amazon Web Services</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>🎓 Microsoft Learn Student Ambassador</h3>
+                        <p>Organized workshops and promoted technical learning initiatives among 100+ students as a Microsoft Learn Student Ambassador</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>📜 Professional Certifications</h3>
+                        <p>Earned certifications in AI Programming with Python and Machine Learning Fundamentals from Udacity, gaining hands-on experience in core ML concepts and Python-based development</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Maithili Annavarapu. All Rights Reserved.</p>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/maithili74" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/maithili-annavarpu" target="_blank">LinkedIn</a>
+                <a href="mailto:maithili.a7@gmail.com">Email</a>
+            </div>
+            <p>&copy; 2025 Maithili Annavarapu. Built with 💜 and code.</p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .project-card, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
